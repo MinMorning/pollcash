@@ -11,4 +11,10 @@ public class PollcashController {
 	public String main(Model model) {
 		return "main";
 	}
+	
+	@GetMapping("/member/join")
+	public String join(Model model) {
+		return "member/join";
+	}
+	
 }
