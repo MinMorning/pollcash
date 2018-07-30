@@ -18,5 +18,13 @@ public class BoardDao {
 		return sqlSession.selectList("board.list");
 	}
 
+	public Board selectOne(int id) {
+		return sqlSession.selectOne("board.selectOne",id);
+	}
+
+	public void plusHit() {
+		
+	}
+
 
 }

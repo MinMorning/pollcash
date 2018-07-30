@@ -13,3 +13,10 @@ create sequence seq_board_id;
 select * from board;
 
 insert into board values(seq_board_id.nextval, 'misha', '첫 번째 일기', '곧 점심시간이다', sysdate,0,0,0,0);
+
+create table member( 
+id varchar2(25) not null,
+password varchar2(40) not null,
+emain varchar2(50) not null,
+point number not null
+);

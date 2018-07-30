@@ -4,14 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="/css/style.css">
 <body>
 	<div class="container">
 		<div class="header">
-			<h3 class="title text_center">자유게시판</h3>
+			<h3 class="title text_center">News</h3>
 			<div class="search">
 				<select id="search_option" onchange="lock()">
 					<option value="all">전체</option>
@@ -38,12 +40,20 @@
 				</tr>
 				</#if>
 				<#list boardList as board>
-				<td>${board.id}</td>
-				<td>${board.title}</td>
-				<td>${board.u_id}</td>				
-				<td>${board.regdata}</td>				
+				<tr>
+					<td>${board.id}</td>
+					<td><a href="/board/view?id=#{board.id}">${board.title}</a></td>
+					<td>${board.u_id}</td>
+					<td>${board.regdate?substring(0,19)}</td>
+					<td>${board.hit}</td>
+				</tr>
+
 				</#list>
+
 			</table>
+			<div class="buttons">
+				<button type="button" onclick="location.href='/board/insert'">글쓰기</button>
+			</div>
 		</div>
 	</div>
 </body>
