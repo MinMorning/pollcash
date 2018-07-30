@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class PollcashController {
 
-	@GetMapping("/")
+	@GetMapping("/main")
 	public String main(Model model) {
 		return "main";
 	}
@@ -15,6 +15,11 @@ public class PollcashController {
 	@GetMapping("/member/join")
 	public String join(Model model) {
 		return "member/join";
+	}
+	
+	@GetMapping("/contact")
+	public String contact(Model model) {
+		return "contact";
 	}
 	
 }

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
+<title>Poll Cash</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -8,43 +8,116 @@
 	href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<style>
+body, h1 {
+	font-family: "Raleway", sans-serif;
+}
+
+body, html {
+	height: 100%;
+}
+
+.bgimg {
+	background-image: url('/img/cash.jpg');
+	min-height: 100%;
+	background-position: center;
+	background-size: cover;
+}
+
+#sidebar {
+	z-index: 3;
+	width: 250px;
+	font-weight: bold;
+	display: none;
+	right: 0;
+	background-color: rgba(50, 50, 50, 0.1);
+}
+
+.w3-bar-item {
+	color: white;
+}
+
+a {
+	font-weight: bold;
+}
+
+a:hover {
+	background-color: rgba(50, 50, 50, 0.1);
+	color: gray;
+	text-decoration: none;
+}
+</style>
 <body>
-	<div class="container">
-		<div class="header">
-			<h3 class="title text_center">자유게시판</h3>
-			<div class="search">
-				<select id="search_option" onchange="lock()">
-					<option value="all">전체</option>
-					<option value="title">제목</option>
-					<option value="name">이름</option>
-					<option value="content">내용</option>
-					<option value="title_name">제목+이름</option>
-				</select> <input type="text" id="search_text" />
-				<button type="button" onclick="search()">검색</button>
+	<#include "/include/nav.html"/>
+
+	<div class="bgimg w3-display-container w3-animate-opacity w3-text-sand">
+		<div class="w3-display-topright w3-padding-large w3-xlarge">
+			<a href="#" class="w3-xlarge w3-theme w3-bar-item"
+				onclick="w3_open()" id="menu">Menu</a>
+		</div>
+
+		<div class="container">
+			<div class="header">
+				<h3 class="title text_center">자유게시판</h3>
+				<div class="search">
+					<select id="search_option" onchange="lock()">
+						<option value="all">전체</option>
+						<option value="title">제목</option>
+						<option value="name">이름</option>
+						<option value="content">내용</option>
+						<option value="title_name">제목+이름</option>
+					</select> <input type="text" id="search_text" />
+					<button type="button" onclick="search()">검색</button>
+				</div>
+			</div>
+			<div class="body">
+				<table class="board-list">
+					<tr>
+						<th width="10%">번호</th>
+						<th width="40%">제목</th>
+						<th width="20%">이름</th>
+						<th width="20%">날짜</th>
+						<th width="10%">조회</th>
+					</tr>
+					<#if !boardList?hasContent>
+					<tr>
+						<td colspan="5">하이</td>
+					</tr>
+					</#if>
+					<#list boardList as board>
+					<td>${board.id}</td>
+					<td>${board.title}</td>
+					<td>${board.u_id}</td>
+					<td>${board.regdata}</td>
+					</#list>
+				</table>
 			</div>
 		</div>
-		<div class="body">
-			<table class="board-list">
-				<tr>
-					<th width="10%">번호</th>
-					<th width="40%">제목</th>
-					<th width="20%">이름</th>
-					<th width="20%">날짜</th>
-					<th width="10%">조회</th>
-				</tr>
-				<#if !boardList?hasContent>
-				<tr>
-					<td colspan="5">하이</td>
-				</tr>
-				</#if>
-				<#list boardList as board>
-				<td>${board.id}</td>
-				<td>${board.title}</td>
-				<td>${board.u_id}</td>				
-				<td>${board.regdata}</td>				
-				</#list>
-			</table>
-		</div>
 	</div>
+
+	<!-- bootstrap script -->
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+	<script>
+		function w3_open() {
+			document.getElementById("sidebar").style.display = "block";
+			document.getElementById("menu").style.display = "none";
+		}
+
+		function w3_close() {
+			document.getElementById("sidebar").style.display = "none";
+			document.getElementById("menu").style.display = "block";
+		}
+
+		$('.message a').click(function() {
+			$('form').animate({
+				height : "toggle",
+				opacity : "toggle"
+			}, "slow");
+		});
+	</script>
+
 </body>
 </html>
