@@ -10,7 +10,7 @@ public class Board {
 	private String title;
 	private String content;
 	private String ip;
-	private String regdata;
+	private String regdate;
 
 	public int getId() {
 		return id;
@@ -84,11 +84,11 @@ public class Board {
 		this.ip = ip;
 	}
 
-	public String getregdata() {
-		return regdata;
+	public String getregdate() {
+		return regdate;
 	}
 
-	public void setregdata(String regdata) {
-		this.regdata = regdata;
+	public void setregdate(String regdate) {
+		this.regdate = regdate;
 	}
 }

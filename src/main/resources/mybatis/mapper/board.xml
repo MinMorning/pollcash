@@ -6,4 +6,8 @@
 	<select id="list" resultType="board">
 		select * from board
 	</select>
+	<select id="selectOne" parameterType="int" resultType="board">
+		select *
+		from board where id = #{value}
+	</select>
 </mapper>
